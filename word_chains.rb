@@ -22,8 +22,26 @@ class WordChains
     valid_words
   end
 
-  def run
+  def run(first_word, last_word)
+    word_sequence = {}
+    dict = valid_dictionary(first_word)
+    word_to_change = first_word
 
+
+  end
+
+  def store_words_in_hash(storage_hash, dictionary)
+      #creates temporary storage hash for the next level of adjacent words
+      temporary_word_hash = {}
+      #iterate through all existing adj word pairs & find next level
+      storage_hash.keys.each do |child, parent|
+        #actually get adjacent words, assign to array, then put into hash
+        found_words = adjacent_words(child, dictionary)
+        found_words.each do |adj_word|
+          temporary_word_hash[adj_word] = child
+        end
+      end
+      temporary_word_hash
   end
 
 end

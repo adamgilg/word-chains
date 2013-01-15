@@ -1,3 +1,5 @@
+# MZ: Since this is clearly a WIP... if my comments seem ignorant please excuse them.
+
 class WordChains
   def valid_dictionary(target_word)
     words = []
@@ -8,6 +10,8 @@ class WordChains
   end
 
 
+  # MZ: This method is looking nice.  @adam: looks a lot cleaner than
+  # the version we created on Friday! :)
   def adjacent_words(target_word, dictionary)
     valid_words = []
     target_word.length.times do |i|
@@ -27,8 +31,12 @@ class WordChains
     #add start_word's adjacent words
     dictionary = valid_dictionary(target_word)
     
+    # MZ: Have you considered pulling this out and possibly dropping it into a 
+    # recursively called method?
     until word_sequence.has_key?(target_word)
-      next_level = store_words_in_hash(word_sequence)
+      # MZ: One argument doesn't match the method's parameter signature (two)
+      # Maybe the dictionary should be passed in too?
+      next_level = store_words_in_hash(word_sequence) 
       next_level.merge(word_sequence)
     end
     #dict = valid_dictionary(first_word)
